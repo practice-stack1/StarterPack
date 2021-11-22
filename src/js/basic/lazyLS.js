@@ -1,4 +1,5 @@
 "use strict"
+import ibg from "./ibg";
 
 const lazyImages = document.querySelectorAll('img[data-src],source[data-srcset]');
 const loadMapBlock = document.querySelector('._load-map');
@@ -13,10 +14,10 @@ if (lazyImages.length > 0) {
 			lazyScrollCheck();//! Відбудиться підгрузка елементів при перезагрузці сторінки на просткроленій частині сторінки
 		}
 	});
+	ibg();
 }
 
 window.addEventListener("scroll", lazyScroll);
-
 function lazyScroll() {
 	if (document.querySelectorAll('img[data-src],source[data-srcset]').length > 0) { //? Так як ми кастомін атребути видаляємо, то дана перевірка не спрацює при відобрежені усіх елементів
 		lazyScrollCheck();
@@ -27,6 +28,7 @@ function lazyScroll() {
 	if (!loadMoreBlock.classList.contains('_loading')) {
 		loadMore();
 	}
+	ibg();
 }
 
 //!  Методи реалізації lazyloading для усіх елементів сторінки
@@ -44,6 +46,7 @@ function lazyScrollCheck() {
 		}
 		delete lazyImagesPositions[imgIndex];
 	}
+	ibg();
 }
 
 
