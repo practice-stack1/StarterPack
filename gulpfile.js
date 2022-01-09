@@ -1,6 +1,6 @@
 let source_folder = 'src';
-let project_folder = 'E:/OpenServer/domains/localhost/test';
-// let project_folder = 'dist';
+// let project_folder = 'E:/OpenServer/domains/localhost/test';
+let project_folder = 'dist';
 
 let fs = require('fs');
 
@@ -67,7 +67,7 @@ function browserSync(params) {
         server: {
             baseDir: './' + project_folder + '/'
         },
-        port: 3000,
+        port: 4200,
         notify: false
     });
 }
@@ -139,67 +139,14 @@ function css() {
 
 function js() {
     return gulp.src(path.src.js)
-                .pipe(webpack({
-                    mode: 'development',
-                    output: {
-                        filename: 'script.js'
-                    },
-                    watch: false,
-                    devtool: "source-map",
-                    module: {
-                        rules: [
-                          {
-                            test: /\.m?js$/,
-                            exclude: /(node_modules|bower_components)/,
-                            use: {
-                              loader: 'babel-loader',
-                              options: {
-                                presets: [['@babel/preset-env', {
-                                    debug: true,
-                                    corejs: 3,
-                                    useBuiltIns: "usage"
-                                }]]
-                              }
-                            }
-                          }
-                        ]
-                      }
-                }))
-                .pipe(gulp.dest(path.build.js))
-                .on("end", browsersync.reload);
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest(path.build.js))
+    .pipe(browsersync.reload({stream: true}));
 }
 
 function js_project() {
     return gulp.src(path.src.js)
-                .pipe(webpack({
-                    mode: 'development',
-                    output: {
-                        filename: 'script.js'
-                    },
-                    watch: false,
-                    devtool: "source-map",
-                    module: {
-                        rules: [
-                          {
-                            test: /\.m?js$/,
-                            exclude: /(node_modules|bower_components)/,
-                            use: {
-                              loader: 'babel-loader',
-                              options: {
-                                presets: [['@babel/preset-env', {
-                                    debug: true,
-                                    corejs: 3,
-                                    useBuiltIns: 'usage',
-                                    corejs: { version: 3, proposals: true }
-                                }]]
-                              },
-                            }
-                          }
-                        ],
-                    }
-
-
-                }))
+                .pipe(webpack(require('./webpack.config.js')))
                 .pipe(gulp.dest(path.build.js));
 }
 
@@ -287,7 +234,6 @@ function watchFile() {
     gulp.watch(path.watch.js, js);
     gulp.watch(path.watch.img, images);
     gulp.watch(path.watch.icon, icons);
-    gulp.watch(path.watch.db, db);
 }
 
 
