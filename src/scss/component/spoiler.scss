@@ -1,0 +1,15 @@
+.spoiler {
+    transition: max-height 0.2s, transform 0.2s;
+    height: auto;
+    max-height: 0px;
+    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    position: relative;
+}
+
+input:checked ~ .spoiler {
+    height: initial;
+    transform: scaleY(1);
+    max-height: 100vh;
+}

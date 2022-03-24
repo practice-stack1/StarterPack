@@ -1,0 +1,158 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    @media all and (min-width: 1200px) {
+        flex-direction: row;
+    }
+    &__content {
+        flex: 0 0 100%;
+        background-color: #edeeeb;
+    }
+    &__container {
+        max-width: 1460px;
+        margin: 0 auto;
+        padding: 0 20px;
+        height: 100%;
+    }
+    &__body {
+        @media all and (min-width: 1200px) {
+            width: 50%;
+            height: 100%;
+            padding: 108px 50px 10vw 0;
+        }
+        @media all and (max-width: 1500px) {
+            padding: 50px 30px;
+            display: flex;
+            align-items: center;
+        }
+        @media all and (max-width: 1200px) {
+            padding: 70px 0 30px 0;
+        }
+        @media all and (max-width: 576px) {
+            padding: 50px 0;
+        }
+        // @media all and (max-width: 992px) {
+        //     padding: 70px 0 30px 0;
+        // }
+    }
+    &__image {
+        overflow: hidden;
+        @media all and (min-width: 1200px) {
+            position: relative;
+            flex: 0 0 50%;
+            transform: translateX(-100%);
+        }
+        @media all and (min-width: 1920px) {
+            padding: initial;
+        }
+        .slick-list,
+        .slick-slider.slick-initialized,
+        .slick-track {
+            background-color: #edeeeb;
+            height: 100%;
+            position: relative;
+        }
+        .slick-track {
+            display: flex;
+        }
+        .slick-dots {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex !important;
+            bottom: 50px;
+            @media all and (max-width: 576px) {
+                bottom: 15px;
+            }
+            li {
+                width: 13px;
+                height: 13px;
+                border: 3px solid $white;
+                background-color: $white;
+                border-radius: 50%;
+                transition: all 0.2s ease;
+                margin: 0 20px 0 0;
+                &:last-child {
+                    margin: 0;
+                }
+                &.slick-active {
+                    background-color: transparent;
+                }
+                button {
+                    display: none;
+                }
+            }
+        }
+        a {
+            display: inline-block;
+            @media all and (min-width: 1200px) {
+                position: relative;
+                width: 50vw !important;
+                padding: 0 0 46.02vw 0;
+                transform: translateX(-100%);
+            }
+            @media all and (min-width: 1920px) {
+                padding: initial;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            @media all and (min-width: 1200px) {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+// <section class="section military">
+//                 <span id="serve" class="nav"></span>
+//                 <div class="section__content">
+//                     <div class="section__container">
+//                         <div class="section__body">
+//                             <div class="article">
+//                                 <span class="supertitle ">
+//                                     Строкова служба
+//                                 </span>
+//                                 <h2 class="h2 article__title">
+//                                     Строкова служба
+//                                 </h2>
+//                                 <div class="article__text">
+//                                     <p class="h4">
+//                                         Територіальні центри комплектування та
+//                                         соціальної підтримки Тернопільської
+//                                         області продовжують виконувати завдання
+//                                         щодо призову юнаків на строкову
+//                                         військову службу.
+//                                     </p>
+//
+//                                 </div>
+//
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <div class="section__image">
+//                              <picture>
+//                                 <source
+//                                     srcset="img/content/main/contract1.webp"
+//                                     type="image/webp"
+//                                 />
+//                                 <source
+//                                     srcset="img/content/main/contract1.jpg"
+//                                     type="image/jpeg"
+//                                 />
+//                                 <img
+//                                     class="lazy"
+//                                     data-src="img/content/main/contract1.jpg"
+//                                     alt="military"
+//                                 />
+//                             </picture>
+//                 </div>
+//             </section>

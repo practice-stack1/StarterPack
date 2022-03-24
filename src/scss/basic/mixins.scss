@@ -1,0 +1,86 @@
+@use "sass:math";
+
+$html-font-size: 16px;
+
+@function rem($size) {
+    @return math.div($size, $html-font-size) * 1rem;
+}
+
+@function getVw($pageSize, $blockSize) {
+    @return math.div($blockSize * 100vw, $pageSize);
+}
+@function getVh($pageSize, $blockSize) {
+    @return math.div($blockSize * 100vh, $pageSize);
+}
+@function getPersent($containerSize, $blockSize) {
+    @return math.div($blockSize * 100%, $containerSize);
+}
+
+@mixin linkHover($color) {
+    position: relative;
+    &:before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 1px;
+        transition: width 0.2s ease;
+        background-color: $color;
+        bottom: 0px;
+        left: 0;
+    }
+    &:hover {
+        &:before {
+            width: 100%;
+        }
+    }
+}
+
+@mixin customCheckbox($padding, $size, $border-color, $src, $bg-color, $br) {
+    input {
+        display: none;
+        &:checked + label {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+    label {
+        padding: 0 0 0 $padding;
+        position: relative;
+        display: inline-flex;
+        height: 100%;
+        align-items: center;
+        white-space: nowrap;
+        &:before,
+        &:after {
+            content: "";
+            width: $size;
+            height: $size;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: $br;
+        }
+        &:before {
+            border: 1px solid $border-color;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+        &:after {
+            background-image: url($src);
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            background-color: $bg-color;
+        }
+    }
+}
+
+@mixin textEllipse($orient) {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: $orient;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

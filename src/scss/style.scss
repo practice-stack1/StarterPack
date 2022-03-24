@@ -1,9 +1,14 @@
 @import "fonts";
+@import "basic/variables";
+@import "basic/mixins";
+@import "basic/adaptive_prop";
+@import "basic/ibg";
+@import "basic/null";
+@import "basic/basic";
+@import "basic/null";
+@import "basic/adaptive_prop";
+@import "basic/variables";
 
 body {
-	font-family: CormorantUpright;
-	font-size: 50px;
-	span {
-		color: red;
-	}
+    font-family: Roboto;
 }
